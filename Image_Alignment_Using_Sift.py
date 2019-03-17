@@ -12,8 +12,8 @@ MIN_MATCH_COUNT = 4
 ##### Image Alignment Using Sift #####
 ######################################
 
-img1 = cv2.imread('results/Edge_Detected_Box.png')
-img2 = cv2.imread('input_images/box/Edge_Detected_Box_T.png')
+img1 = cv2.imread('input_images/box/AT_Translate_2.png')
+img2 = cv2.imread('input_images/box/AT_Translate.png')
 
 img1 = cv2.resize(img1,(800,600))
 img2 = cv2.resize(img2,(800,600))
