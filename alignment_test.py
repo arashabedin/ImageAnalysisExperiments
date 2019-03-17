@@ -17,7 +17,7 @@ img2 = cv.resize(img2,(800,600))
 
 myAligned = alignImages(img, img2)
 # rows,cols = img.shape
-# M = np.float32([[1,0,-500],[0,1,-300]])
+# M = np.float32([[1,0,200],[0,1,150]])
 # myAligned = cv.warpAffine(img,M,(cols,rows))
 
 # corners = cv.goodFeaturesToTrack(myAligned,225,0.01,10)
