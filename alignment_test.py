@@ -16,6 +16,10 @@ img2 = cv.resize(img2,(800,600))
 
 
 myAligned = alignImages(img, img2)
+# rows,cols = img.shape
+# M = np.float32([[1,0,-500],[0,1,-300]])
+# myAligned = cv.warpAffine(img,M,(cols,rows))
+
 # corners = cv.goodFeaturesToTrack(myAligned,225,0.01,10)
 # corners = np.int0(corners)
 
@@ -28,6 +32,19 @@ myAligned = alignImages(img, img2)
 ########################################
 ##### Displaying the final results #####
 ########################################
+def HausdorffDist(A,B):
+        D_mat = np.sqrt(inner1d(A,A)[np.newaxis].T + inner1d(B,B)-2*(np.dot(A,B.T)))
+        dH = np.max(np.array([np.max(np.min(D_mat,axis=0)),np.max(np.min(D_mat,axis=1))]))
+        return(dH)
+corners = cv.goodFeaturesToTrack(img2,225,0.01,10)
+corners2 = cv.goodFeaturesToTrack(myAligned,225,0.01,10)
+n1 = np.squeeze(np.asarray(corners))
+n2 = np.squeeze(np.asarray(corners2))
+
+distance = HausdorffDist(n1,n2)
+print("distance")
+print(distance)
+
 
 
 plt.subplot(121),plt.imshow(img2,cmap = 'gray')
