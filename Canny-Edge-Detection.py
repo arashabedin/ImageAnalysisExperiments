@@ -5,6 +5,7 @@ from PIL import Image
 
 img = cv2.imread('input_images/box/model_edited.jpg',0)
 
+
 #enhancing the contrast
 def contrastEnhancer(img): 
     hist,bins = np.histogram(img.flatten(),256,[0,80])
@@ -20,6 +21,5 @@ edges = cv2.Canny(contrastEnhancer(img) ,60,120)
 edges = cv2.bitwise_not(edges)
 
 plt.imshow(edges,cmap = 'gray')
-
 plt.show()
 

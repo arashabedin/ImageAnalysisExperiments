@@ -75,7 +75,7 @@ def ModHausdorffDist(A,B):
 ##### Shi Tomasi Corner Detection #####
 #######################################
 
-img = cv2.imread('results/Edge_Detected_Box.png')
+img = cv2.imread('results/Canny-Edge-Detected.png')
 img = cv2.resize(img,(800,600))
 
 height, width, channels = img.shape
@@ -88,10 +88,15 @@ blank.fill(255)
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
 corners = cv2.goodFeaturesToTrack(gray,225,0.01,10)
+print(corners)
+
 corners = np.int0(corners)
+# print(corners)
 
 
-img2 = cv2.imread('results/Canny-Edge-Detected(rotated).png')
+img2 = cv2.imread('results/Edge_Detected_Box.png')
+img2 = cv2.resize(img2,(800,600))
+
 gray2 = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
 
 corners2 = cv2.goodFeaturesToTrack(gray2,225,0.01,10)
@@ -101,8 +106,7 @@ corners2 = np.int0(corners2)
 n1 = np.squeeze(np.asarray(corners))
 n2 = np.squeeze(np.asarray(corners2))
 
-
-
+print("the final results:")
 print(HausdorffDist(n1,n2))
 
 
